@@ -1,69 +1,148 @@
 # Security Policy
 
 ## Goal
-This document describes how to report vulnerabilities and how we respond for the **TARL-Net** repository. 
 
-> [!WARNING]
-> This project is academic research code. Please thoroughly evaluate security risks before deploying it in production Industrial Control Systems (ICS) or Operational Technology (OT) environments.
+This document describes how security vulnerabilities should be reported for the **TARL-Net** repository and outlines the project's disclosure and response process.
 
----
-
-## Scope
-
-| In-Scope | Out-of-Scope |
-| :--- | :--- |
-| • Core source code and model architectures<br>• Project dependencies (`requirements.txt`)<br>• Example configurations and pipeline run scripts | • Third-party datasets (e.g., Kaggle, UNSW-NB15, WADI)<br>• External hosting services or infrastructure |
+> **Research Notice**
+>
+> TARL-Net is an academic research project developed for experimentation, benchmarking, and scientific evaluation. The code has **not** been designed or certified for production deployment in mission-critical environments. Users are responsible for conducting appropriate security reviews before deploying any component in operational systems.
 
 ---
 
-## Supported Versions
-We officially provide security review and support for the following versions:
+# Scope
 
-| Version / Branch | Supported | Notes |
-| :--- | :---: | :--- |
-| `main` branch |  Yes | Active development and latest tagged releases (Best Effort). |
-| Older Versions | ⚠️ Case-by-Case | Reviewed only for **High** or **Critical** security issues. |
-
----
-
-## Reporting a Vulnerability
-If you discover a security vulnerability, please do not open a public GitHub Issue. Instead, use one of the following secure channels:
-
-1. **Preferred:** Open a private **GitHub Security Advisory** directly through this repository.
-2. **Alternative:** Email the security contact at **rezahamzeh.sh@gmail.com** with the subject line: `[ics-ot-wadi-hybrid-ids] Vulnerability Report`.
-
-### What to include in your report:
-To help us triage and fix the issue quickly, please include:
-* **Component:** The affected file, module, or dependency with a brief description.
-* **Environment:** Version/commit hash, Operating System, and Python environment details.
-* **Proof of Concept (PoC):** Step-by-step instructions or a minimal script to reproduce the issue.
-* **Impact:** Potential attack vectors and the severity of the impact.
-* **Mitigation:** Any temporary workarounds or fix ideas (if available).
+| In Scope                                     | Out of Scope                               |
+| -------------------------------------------- | ------------------------------------------ |
+| Core source code and notebook implementation | Third-party datasets (e.g., UNSW-NB15)     |
+| Model architectures and training pipeline    | External cloud infrastructure              |
+| Repository configuration files               | User-specific deployment environments      |
+| Project dependencies                         | Operating systems and third-party software |
 
 ---
 
-## Disclosure Process
-* **Acknowledgment:** We will acknowledge receipt of your report within **3 business days**.
-* **Assessment:** We evaluate the severity using the CVSS v3.1 framework.
-* **Remediation:** We aim to patch **High** or **Critical** vulnerabilities within **14 business days** whenever feasible.
-* **Coordinated Disclosure:** We kindly ask to keep all vulnerability details confidential until an official patch or workaround is released. Public disclosure will be coordinated mutually with the reporter.
+# Supported Versions
+
+| Version        | Supported  | Notes                        |
+| -------------- | ---------- | ---------------------------- |
+| `main`         | ✅ Yes      | Active development branch    |
+| Latest release | ✅ Yes      | Best-effort support          |
+| Older commits  | ⚠️ Limited | High or Critical issues only |
 
 ---
 
-## Risk Mitigations
-* **Research-Oriented:** This is a research repository; it does not implement host or network hardening mechanisms by default.
-* **Sandboxing:** Always execute this notebook/code within isolated, sandboxed environments (e.g., restricted Docker containers or virtual machines) and avoid processing sensitive corporate data.
-* **Secrets Management:** Never commit API keys, Kaggle tokens, or system credentials to the repository. Utilize environment variables or local configuration managers.
+# Reporting a Vulnerability
+
+If you discover a potential security vulnerability, **please do not create a public GitHub Issue.**
+
+Instead, report it through one of the following channels:
+
+### Preferred
+
+Use **GitHub Private Security Advisories** for confidential vulnerability disclosure.
+
+### Alternative
+
+Email:
+
+**[rezahamzeh.sh@gmail.com](mailto:rezahamzeh.sh@gmail.com)**
+
+Subject:
+
+```
+[TARL-Net] Security Vulnerability Report
+```
 
 ---
 
-## Security Best Practices
-* Use a dedicated virtual environment (`venv` or `conda env`) for running the pipeline.
-* Keep dependencies up to date and regularly audit them using automated tools like `pip-audit` or `safety`.
-* Enable automated GitHub CI/CD workflows to run unit tests and dependency scans on new Pull Requests.
+# Please Include
+
+To help us investigate efficiently, include:
+
+* A description of the vulnerability
+* Affected component or file
+* Repository version or commit hash
+* Operating system and Python version
+* Steps to reproduce the issue
+* Proof-of-Concept (if available)
+* Potential impact
+* Suggested mitigation (optional)
 
 ---
 
-## Security Contact
-* **Contact:** Reza Hamzeh Shalamzari
-* **Email:** rezahamzeh.sh@gmail.com
+# Disclosure Process
+
+Our coordinated disclosure process follows these steps:
+
+1. **Acknowledgment**
+
+   Reports are acknowledged within **3 business days** whenever possible.
+
+2. **Assessment**
+
+   Vulnerabilities are evaluated according to the **CVSS v3.1** framework.
+
+3. **Remediation**
+
+   High and Critical vulnerabilities are prioritized for remediation as quickly as reasonably possible.
+
+4. **Disclosure**
+
+   We request that vulnerability details remain confidential until an official fix, mitigation, or advisory has been published.
+
+---
+
+# Security Recommendations
+
+Because TARL-Net is a research implementation, users are encouraged to follow these best practices:
+
+* Execute the notebook only inside isolated environments such as virtual machines or Docker containers.
+
+* Use a dedicated Python virtual environment (`venv` or `conda`).
+
+* Keep dependencies updated.
+
+* Regularly audit installed packages using tools such as:
+
+  * `pip-audit`
+  * `safety`
+
+* Never commit API keys, access tokens, credentials, or confidential datasets.
+
+* Store secrets using environment variables or secure credential managers.
+
+* Carefully review custom modifications before deployment.
+
+---
+
+# Production Deployment
+
+The repository is intended primarily for research and educational purposes.
+
+If TARL-Net is deployed in production environments, users should additionally implement:
+
+* Authentication and authorization
+* Secure network segmentation
+* Access control
+* Logging and monitoring
+* Dependency vulnerability scanning
+* Secure configuration management
+* Continuous security testing
+
+These operational controls are outside the scope of this repository.
+
+---
+
+# Security Contact
+
+**Maintainer**
+
+Reza Hamzeh Shalamzari
+
+📧 **Email**
+
+[rezahamzeh.sh@gmail.com](mailto:rezahamzeh.sh@gmail.com)
+
+---
+
+Thank you for helping improve the security and reliability of TARL-Net.
