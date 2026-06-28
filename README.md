@@ -200,11 +200,15 @@ The current notebook includes the final reviewer-requested additions:
 
 ```
 .
+├── CITATION.cff
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE.md
 ├── README.md
+├── SECURITY.md
 └── TARL_NET_extended_v3.ipynb
 ```
 
----
 
 # Requirements
 
@@ -231,7 +235,7 @@ jupyter
 Clone the repository
 
 ```bash
-git clone https://github.com/rezahamzeh69/TARL_NET_extended_v3.git
+git clone https://github.com/rezahamzeh69/TARL-Net-ZeroDay-IDS.git
 ```
 
 Enter the project
