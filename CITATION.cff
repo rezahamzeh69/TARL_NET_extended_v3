@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: "TARL-Net: Threat-Aware Adaptive Representation Learning Network for Zero-Day Intrusion Detection"
+message: "If you use this software or research framework, please cite it using the metadata below."
+type: software
+
+authors:
+  - family-names: Hamzeh Shalamzari
+    given-names: Reza
+    email: rezahamzeh.sh@gmail.com
+    affiliation: "PhD Researcher in Artificial Intelligence & Cybersecurity"
+
+version: 1.0.0
+date-released: 2026-01-01
+
+repository-code: "https://github.com/rezahamzeh69/TARL_NET_extended_v3"
+
+license: "Proprietary (All Rights Reserved until official open-source release)"
+
+keywords:
+  - cybersecurity
+  - intrusion detection
+  - deep learning
+  - zero-day detection
+  - open-set recognition
+  - self-supervised learning
+  - explainable AI
+  - continual learning
+
+preferred-citation:
+  type: article
+  title: "TARL-Net: Threat-Aware Adaptive Representation Learning Network for Zero-Day Intrusion Detection"
+  authors:
+    - family-names: Hamzeh Shalamzari
+      given-names: Reza
+  year: 2026
+  note: "PhD Dissertation / Research Implementation"
