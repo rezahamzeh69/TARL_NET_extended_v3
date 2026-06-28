@@ -1,52 +1,345 @@
-# TARL-Net: Threat-Aware Transformer–LSTM Network for Open-Set Zero-Day Intrusion Detection and Interpretable Threat Intelligence
+# TARL-Net
 
-<p align="center">
-  <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+">
-  <img src="https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c.svg" alt="PyTorch">
-  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
-  <img src="https://img.shields.io/badge/Degree-Ph.D.%20Dissertation-gold.svg" alt="Academic Status">
-</p>
+> **Threat-Aware Adaptive Representation Learning Network for Intelligent Intrusion Detection**
 
-The **TARL-Net** framework is an end-to-end, unified architecture for cyber attack detection and forecasting based on deep learning. The core focus of this research is the transition from traditional closed-set systems to a resilient system operating in open-set environments, capable of identifying zero-day attacks with calibrated interpretability and continuous adaptation against concept drift.
+A research-oriented implementation of **TARL-Net**, a hybrid deep learning framework for intelligent intrusion detection, zero-day attack recognition, self-supervised representation learning, open-set recognition, continual learning, and explainable cyber threat intelligence.
 
 ---
 
-## 📌 Core Innovations & Key Features
+## Overview
 
-TARL-Net is organized around a primary scientific contribution supported by five foundational components:
+TARL-Net is a unified deep learning framework designed to address several major limitations of modern Intrusion Detection Systems (IDSs).
 
-1. **Per-Dimension Adaptive Gating Conditioned on Threat Context:** The core innovation dynamically blends global (Transformer) and temporal (BiLSTM) representations on a per-dimension basis, guided by a learnable threat context routing vector.
-2. **Semantic-Preserving Self-Supervised Pre-training (SSL):** Masked traffic modeling featuring a progressive strategy and contrastive learning to mitigate extreme dependency on labeled datasets.
-3. **Class-Conditional Open-Set Recognition (OSR) Gateway:** Reformulating the Deep SVDD method with hypersphere anti-collapse mechanisms and quantile thresholding to structurally isolate known behaviors from zero-day threats.
-4. **Two-Level Operational Trust Layer:** Real-time online interpretability powered by *Attention Rollout* for instant security operations, and offline forensic analysis utilizing *Integrated Gradients*, complemented by temperature calibration (yielding an ECE of 0.0188).
-5. **Analyst-in-the-Loop Continual Learning:** Counteracting concept drift by combining an experience replay buffer with Elastic Weight Consolidation (EWC).
-6. **Short-Horizon Forecasting & Early Warning:** Enabling early warning score issuance prior to the full execution of multi-stage attack scenarios.
+Unlike conventional IDS models that rely on fully supervised closed-set learning, TARL-Net integrates multiple state-of-the-art AI techniques into a single end-to-end architecture capable of:
 
----
+- Detecting known attacks
+- Identifying previously unseen (Zero-Day) attacks
+- Learning from unlabeled network traffic
+- Adapting to concept drift
+- Producing explainable security decisions
+- Supporting early attack prediction
 
-## 📊 Evaluation Protocol & Dataset
-
-Experimental evaluations were conducted on the full version of the benchmark **UNSW-NB15** dataset (retaining precise temporal and contextual sequence data). To rigorously evaluate real-world generalization, a strict **Leave-One-Attack-Family-Out (LOAFO)** protocol was executed across 3 distinct random seeds.
-
-### Anti-Data-Leakage Safeguards
-* Non-overlapping flow windowing constructed using the `(Host, Service)` key structure.
-* All statistical parameters and robust preprocessing scalers were fitted exclusively on the training partition.
+The framework was developed as part of a PhD research project in Artificial Intelligence for Cybersecurity.
 
 ---
 
-## 📈 Experimental Results
+# Key Features
 
-Summary of operational performance and evaluation metrics derived from multi-seed simulations (reported as Mean ± Standard Deviation):
+✔ Hybrid Transformer–BiLSTM Architecture
 
-| Evaluation Metric | Value / Status | Operational & Managerial Implication |
-| :--- | :---: | :--- |
-| **Closed-Set Accuracy** | 0.9916 | Exceptional precision in identifying conventional network behaviors. |
-| **Macro-F1 Score** | 0.4424 | Honest performance reflection under severe class imbalance conditions. |
-| **OSR-AUROC (Zero-Day)** | 0.9633 ± 0.0376 | High and stable capability in isolating unknown novel attacks. |
-| **Expected Calibration Error (ECE)** | 0.0188 | High reliability regarding the confidence scores output by the model. |
-| **Explanation Fidelity (Insertion Metric)** | 0.8479 | Strong alignment between provided XAI explanations and actual model behavior. |
-| **Inference Latency** | ~0.013 ms | Extremely lightweight, suitable for line-rate real-time deployment. |
-| **Memory Overhead** | ~97 MB | Very low Total Cost of Ownership (TCO) for hardware resource allocation. |
+✔ Threat-Aware Adaptive Vector Fusion
 
-> ⚠️ **Scientific Integrity Disclosure:** Continual learning under rare attack exposures faces catastrophic forgetting challenges. While Replay+EWC maintains overall stability (Accuracy = 0.8844), the Macro-F1 drops to 0.1762 during continual adaptation phases, which is documented as an open limitation of this research.
+✔ Self-Supervised Representation Learning
 
+✔ Open-Set Recognition (Zero-Day Detection)
+
+✔ Explainable AI (Attention Rollout + Integrated Gradients)
+
+✔ Confidence Calibration
+
+✔ Continual Learning (Replay + EWC)
+
+✔ Early Threat Prediction
+
+✔ Multi-Seed Evaluation
+
+✔ Cross-Dataset Zero-Shot Transfer
+
+✔ Robust Experimental Protocol
+
+---
+
+# Notebook
+
+This repository currently contains the complete implementation inside:
+
+```
+TARL_NET_extended_v3.ipynb
+```
+
+The notebook includes the entire research pipeline from data preprocessing to evaluation.
+
+---
+
+# Research Pipeline
+
+```
+Raw Network Traffic
+        │
+        ▼
+Data Preprocessing
+        │
+        ▼
+Feature Engineering
+        │
+        ▼
+Self-Supervised Pretraining
+        │
+        ▼
+Hybrid Encoder
+
+ ┌─────────────────┐
+ │  Transformer    │
+ └─────────────────┘
+
+        +
+
+ ┌─────────────────┐
+ │     BiLSTM      │
+ └─────────────────┘
+
+        │
+        ▼
+
+Threat-Aware Adaptive Fusion
+
+        │
+        ▼
+
+Open-Set Recognition
+
+        │
+        ▼
+
+Threat Classification
+
+        │
+        ▼
+
+Explainability
+
+        │
+        ▼
+
+Threat Intelligence Report
+```
+
+---
+
+# Main Components
+
+## Hybrid Feature Encoder
+
+The proposed architecture combines
+
+- Transformer
+- Bidirectional LSTM
+
+to simultaneously model
+
+- long-range dependencies
+- sequential temporal behavior
+- contextual traffic relationships
+
+---
+
+## Threat-Aware Adaptive Fusion
+
+Instead of static feature concatenation, TARL-Net dynamically learns the contribution of each representation using a threat-aware adaptive vector gate.
+
+---
+
+## Self-Supervised Learning
+
+To reduce dependency on expensive labeled datasets, the model performs
+
+- Masked Traffic Modeling
+- Contrastive Learning
+
+before supervised fine-tuning.
+
+---
+
+## Open-Set Recognition
+
+Unknown attacks are identified using a class-conditional Deep SVDD framework capable of distinguishing
+
+- Known attacks
+- Unknown attacks
+- Benign traffic
+
+without forcing all samples into predefined classes.
+
+---
+
+## Explainable AI
+
+The framework provides
+
+- Attention Rollout
+- Integrated Gradients
+- Confidence Calibration
+
+to improve operational trust.
+
+---
+
+## Continual Learning
+
+Replay Memory and Elastic Weight Consolidation (EWC) are employed to reduce catastrophic forgetting under concept drift.
+
+---
+
+# Experimental Additions (v3)
+
+The current notebook includes the final reviewer-requested additions:
+
+- Independent-dataset Zero-Shot Transfer
+- Multi-seed Ablation Analysis
+- MCC
+- Cohen's Kappa
+- Balanced Accuracy
+- Continual Learning Evaluation
+- Wall-clock Runtime Analysis
+- Multi-horizon Prediction
+- Thesis Figure Export Utilities
+
+---
+
+# Repository Structure
+
+```
+.
+├── README.md
+└── TARL_NET_extended_v3.ipynb
+```
+
+---
+
+# Requirements
+
+Python 3.10+
+
+Recommended libraries:
+
+```
+torch
+numpy
+pandas
+scikit-learn
+matplotlib
+scipy
+shap
+captum
+jupyter
+```
+
+---
+
+# Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/rezahamzeh69/TARL_NET_extended_v3.git
+```
+
+Enter the project
+
+```bash
+cd TARL_NET_extended_v3
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Launch Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+Open
+
+```
+TARL_NET_extended_v3.ipynb
+```
+
+---
+
+# Running
+
+Execute notebook cells sequentially.
+
+The final experiment can be launched using
+
+```python
+main_full_v3(ConfigX(seeds=(1337,)))
+```
+
+---
+
+# Evaluation Metrics
+
+The notebook reports
+
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Macro F1
+- AUROC
+- MCC
+- Cohen's κ
+- Balanced Accuracy
+- False Positive Rate
+- Open-Set AUROC
+- Early Warning Score
+- Runtime
+- Memory Usage
+
+---
+
+# Dataset
+
+The implementation is designed for benchmark intrusion detection datasets including
+
+- UNSW-NB15
+
+and supports cross-dataset transfer evaluation.
+
+---
+
+# Research Contributions
+
+The proposed framework introduces
+
+- Threat-aware adaptive representation fusion
+- Self-supervised traffic representation learning
+- Open-set Zero-Day detection
+- Explainable cyber threat intelligence
+- Continual learning under concept drift
+- Early attack prediction
+- Robust evaluation protocol
+
+within a unified architecture.
+
+---
+
+# Citation
+
+If you use this repository in your research, please cite:
+
+```bibtex
+@misc{hamzeh2026tarlnet,
+  title={TARL-Net: Threat-Aware Adaptive Representation Learning Network},
+  author={Reza Hamzeh},
+  year={2026},
+  note={Research implementation}
+}
+```
+
+---
+
+# License
+
+This project is intended for academic and research purposes.
+
+---
+
+# Acknowledgment
+
+This repository accompanies doctoral research on intelligent cyber threat detection, trustworthy artificial intelligence, and next-generation intrusion detection systems.
